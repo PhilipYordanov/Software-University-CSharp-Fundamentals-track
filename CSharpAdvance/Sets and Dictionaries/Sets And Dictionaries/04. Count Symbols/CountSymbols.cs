@@ -11,7 +11,7 @@ public class CountSymbols
 
         for (int i = 0; i < inputString.Length; i++)
         {
-            if (!symbols_count.ContainsKey(inputString[i]))
+            if (symbols_count.ContainsKey(inputString[i]))
             {
                 symbols_count[inputString[i]] = 1;
             }
