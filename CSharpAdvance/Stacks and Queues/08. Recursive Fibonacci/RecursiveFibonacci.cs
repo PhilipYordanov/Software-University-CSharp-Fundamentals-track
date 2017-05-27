@@ -1,15 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace _08.Recursive_Fibonacci
+public class RecursiveFibonacci
 {
-    class Program
+    public static void Main()
     {
-        static void Main(string[] args)
+
+        var number = int.Parse(Console.ReadLine());
+
+        Console.WriteLine(GetFibonacci(number));
+    }
+
+    public static int GetFibonacci(int number)
+    {
+        if (number <= 2)
         {
+            return 1;
         }
+
+        return GetFibonacci(number - 1) + GetFibonacci(number - 2);
     }
 }
+
