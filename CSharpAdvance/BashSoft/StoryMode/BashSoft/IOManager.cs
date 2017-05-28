@@ -9,9 +9,9 @@
         public static void TraverseDirectory(int depth)
         {
             OutputWriter.WriteEmptyLine();
-            int initialIdentation = SessionData.CurrentPath.Split('\\').Length;
+            int initialIdentation = SessionData.currentPath.Split('\\').Length;
             Queue<string> subFolders = new Queue<string>();
-            subFolders.Enqueue(SessionData.CurrentPath);
+            subFolders.Enqueue(SessionData.currentPath);
 
             while (subFolders.Count != 0)
             {
@@ -65,10 +65,10 @@
             {
                 try
                 {
-                    string currentPath = SessionData.CurrentPath;
+                    string currentPath = SessionData.currentPath;
                     int indexOfLastSlash = currentPath.LastIndexOf("\\");
                     string newPath = currentPath.Substring(0, indexOfLastSlash);
-                    SessionData.CurrentPath = newPath;
+                    SessionData.currentPath = newPath;
                 }
                 catch (ArgumentOutOfRangeException)
                 {
@@ -77,7 +77,7 @@
             }
             else
             {
-                string currentPath = SessionData.CurrentPath;
+                string currentPath = SessionData.currentPath;
                 currentPath += "\\" + relativePath;
                 ChangeCurrentDirectoryAbsolute(currentPath);
             }
@@ -91,7 +91,7 @@
                 return;
             }
 
-            SessionData.CurrentPath = absolutePath;
+            SessionData.currentPath = absolutePath;
         }
     }
 }
