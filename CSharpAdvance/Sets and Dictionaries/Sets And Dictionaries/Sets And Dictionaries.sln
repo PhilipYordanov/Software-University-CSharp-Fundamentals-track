@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10. Population Counter", "1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11. Logs Aggregator", "11. Logs Aggregator\11. Logs Aggregator.csproj", "{3A5A9FE0-36E2-492B-AFFA-A83D6CC82EA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12. Legendary Farming", "12. Legendary Farming\12. Legendary Farming.csproj", "{615667F6-EB25-4DA0-8C9C-2B846577D1CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13. Srabsko Unleashed", "13. Srabsko Unleashed\13. Srabsko Unleashed.csproj", "{AB5144A7-5E55-458B-8613-661A02DEAC6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{3A5A9FE0-36E2-492B-AFFA-A83D6CC82EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A5A9FE0-36E2-492B-AFFA-A83D6CC82EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A5A9FE0-36E2-492B-AFFA-A83D6CC82EA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{615667F6-EB25-4DA0-8C9C-2B846577D1CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{615667F6-EB25-4DA0-8C9C-2B846577D1CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{615667F6-EB25-4DA0-8C9C-2B846577D1CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{615667F6-EB25-4DA0-8C9C-2B846577D1CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB5144A7-5E55-458B-8613-661A02DEAC6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB5144A7-5E55-458B-8613-661A02DEAC6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB5144A7-5E55-458B-8613-661A02DEAC6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB5144A7-5E55-458B-8613-661A02DEAC6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

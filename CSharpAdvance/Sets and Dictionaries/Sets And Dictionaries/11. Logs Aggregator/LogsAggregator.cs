@@ -9,7 +9,7 @@
         public static void Main()
         {
             var numberOfLogs = int.Parse(Console.ReadLine());
-            Dictionary<string, Dictionary<string, int>> userIpDuration = new Dictionary<string, Dictionary<string, int>>();
+            var userIpDuration = new Dictionary<string, Dictionary<string, int>>();
 
             for (int i = 0; i < numberOfLogs; i++)
             {
