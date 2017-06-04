@@ -6,7 +6,7 @@ public class LegoBlocks
     public static void Main()
     {
         var rowParam = int.Parse(Console.ReadLine());
-
+        
         var firstMatrix = new int[rowParam][];
         var secondMatrix = new int[rowParam][];
 

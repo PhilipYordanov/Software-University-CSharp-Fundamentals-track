@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-
 
 class Problem2
 {
-    static void Main()
+    public static void Main()
     {
         int[] dimensions = Console.ReadLine().Split().Select(int.Parse).ToArray();
         int n = dimensions[0];
@@ -22,9 +20,9 @@ class Problem2
             {
                 Console.Write(stairs[i, j]);
             }
+
             Console.WriteLine();
         }
-
     }
 
     private static void FallingDown(char[,] stairs, int n, int m)
@@ -45,7 +43,8 @@ class Problem2
                     }
                 }
             }
-        } while (fallen);
+        }
+        while (fallen);
     }
 
     private static void TakeAShot(char[,] stairs)
@@ -67,7 +66,6 @@ class Problem2
                 }
                 catch (Exception)
                 {
-
                     continue;
                 }
             }
