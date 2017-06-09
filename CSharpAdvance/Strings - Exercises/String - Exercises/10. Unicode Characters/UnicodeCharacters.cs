@@ -5,7 +5,7 @@ public class UnicodeCharacters
 {
     public static void Main()
     {
-        var input = Console.ReadLine(); ;
+        var input = Console.ReadLine();
 
         var chars = input
             .Select(c => (int)c)

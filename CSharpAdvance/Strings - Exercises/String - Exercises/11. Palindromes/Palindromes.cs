@@ -32,12 +32,14 @@ public class Palindromes
                         break;
                     }
                 }
+
                 if (isPalindrome == true)
                 {
                     palindromes.Add(word);
                 }
             }
         }
+
         var orderedPalindromes = palindromes.ToList();
         orderedPalindromes.Sort((a, b) => a.CompareTo(b));
         Console.WriteLine($"[{string.Join(", ", orderedPalindromes)}]");

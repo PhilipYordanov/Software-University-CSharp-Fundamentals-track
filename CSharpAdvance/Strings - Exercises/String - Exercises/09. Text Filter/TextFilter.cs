@@ -5,7 +5,7 @@ public class TextFilter
     public static void Main()
     {
         var bannedWords = Console.ReadLine()
-            .Split(new[] {',',' ' },StringSplitOptions.RemoveEmptyEntries);
+            .Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
         var text = Console.ReadLine();
 
@@ -14,7 +14,7 @@ public class TextFilter
             while (text.IndexOf(bannedWords[i]) != -1)
             {
                 var replecedWord = new string('*', bannedWords[i].Length);
-                text = text.Replace(bannedWords[i],replecedWord);
+                text = text.Replace(bannedWords[i], replecedWord);
             }
         }
         Console.WriteLine(text);

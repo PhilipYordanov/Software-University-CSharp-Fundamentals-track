@@ -33,6 +33,7 @@ public class CharacterMultiplier
         {
             sum += longer[longer.Length - 1 - i];
         }
+
         return sum;
     }
 }
