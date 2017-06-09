@@ -1,267 +1,125 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-public class Crossfire
+﻿namespace _09.Crossfire
 {
-    public static void Main()
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    class Crossfire
     {
-        var initializeMatrixToPrint = new Queue<int[]>();
+        public static int Rows;
+        public static int Cols;
+        public static List<List<long>> Matrix;
 
-        var matrixParams = Console.ReadLine()
-            .Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
-            .Select(int.Parse)
-            .ToArray();
-        var counter = 1;
-
-        var matrix = new int[Math.Abs(matrixParams[0])][];
-
-        for (int row = 0; row < matrix.Length; row++)
+        public static void Main()
         {
-            matrix[row] = new int[Math.Abs(matrixParams[1])];
+            int[] dimentions = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            Rows = dimentions[0];
+            Cols = dimentions[1];
+            string input = Console.ReadLine();
+            FillMatrix();
 
-            for (int col = 0; col < matrix[row].Length; col++)
+            while (input != "Nuke it from orbit")
             {
-                matrix[row][col] = counter;
-                counter++;
+                var command = input.Split();
+                int cellRow = int.Parse(command[0]);
+                int cellCol = int.Parse(command[1]);
+                int radius = int.Parse(command[2]);
+                Nuke(cellRow, cellCol, radius);
+                ReorderMatrix();
+                input = Console.ReadLine();
+            }
+
+            PrintMatrix();
+        }
+
+        public static void FillMatrix()
+        {
+            Matrix = new List<List<long>>();
+            int count = 1;
+            for (int i = 0; i < Rows; i++)
+            {
+                Matrix.Add(new List<long>());
+                for (int k = 0; k < Cols; k++)
+                {
+                    Matrix[i].Add(count);
+                    count++;
+                }
             }
         }
 
-        string input;
-
-        while ((input = Console.ReadLine()) != "Nuke it from orbit")
+        public static void Nuke(int row, int col, int radius)
         {
-            var targetParams = input
-                .Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse)
-                .ToArray();
-
-            var targetRow = targetParams[0];
-            var targetCol = targetParams[1];
-            var range = targetParams[2];
-
-            try
+            for (int i = col - radius; i <= col + radius; i++)
             {
-                var currentRow = matrix[targetRow].ToList();
-                currentRow[targetCol] = 0;
-                ShootRight(targetCol, range, currentRow);
-                ShootLeft(targetCol, range, currentRow);
-                matrix[targetRow] = currentRow.ToArray();
-                ShootNextRows(matrix, targetRow, targetCol, range);
-                ShootPreviousRows(matrix, targetRow, targetCol, range);
-
-                for (int row = 0; row < matrix.Length; row++)
+                if (isInMatrix(row, i))
                 {
-                    var arr = matrix[row];
-                    arr = arr.Where(s => s != 0).ToArray();
-
-                    int areAllZeros = 0;
-
-                    // check if the whole row is zeros
-                    bool allEqual = arr
-                      .All(currentRowToCheck => int.Equals(areAllZeros, currentRowToCheck));
-                    // if the row contains elements different from zeros  
-                    if (!allEqual)
-                    {
-                        initializeMatrixToPrint.Enqueue(arr);
-                    }
-                }
-                matrix = new int[initializeMatrixToPrint.Count][];
-                for (int i = 0; i < matrix.Length; i++)
-                {
-                    matrix[i] = initializeMatrixToPrint.Dequeue();
+                    Matrix[row][i] = 0;
                 }
             }
-            catch (Exception)
+
+            for (int i = row - radius; i <= row + radius; i++)
             {
-                try
+                if (isInMatrix(i, col))
                 {
-                    if (targetRow >= 0 && targetRow < matrix[0].Length)
-                    {
-                        if (targetCol - range >= 0 && targetCol - range < matrix[0].Length)
-                        {
-                            for (int i = targetCol - range; i < matrix[0].Length; i++)
-                            {
-                                matrix[targetRow][i] = 0;
-                            }
-                        }
-                        if (targetCol - range < 0 && targetCol > 0)
-                        {
-                            for (int i = 0; i < matrix[0].Length; i++)
-                            {
-                                matrix[targetRow][i] = 0;
-                            }
-                        }
-                    }
+                    Matrix[i][col] = 0;
                 }
-                catch (Exception)
+            }
+
+        }
+
+        public static bool isInMatrix(int row, int col)
+        {
+            int matrixRows = Matrix.Count;
+            if (row < 0 || row >= matrixRows)
+            {
+                return false;
+            }
+            else
+            {
+                int matrixCols = Matrix[row].Count;
+                if (col < 0 || col >= matrixCols)
                 {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public static void ReorderMatrix()
+        {
+            for (int i = 0; i < Matrix.Count; i++)
+            {
+                for (int k = Matrix[i].Count - 1; k >= 0; k--)
+                {
+                    if (Matrix[i][k] == 0)
+                    {
+                        Matrix[i].RemoveAt(k);
+                    }
                 }
 
-                try
+                if (Matrix[i].Count == 0)
                 {
-                    if (targetRow >= 0 && targetRow < matrix[0].Length)
-                    {
-                        if (targetCol + range >= 0 && targetCol + range <= matrix[0].Length)
-                        {
-                            for (var i = targetCol + range - 1; i >= 0; i--)
-                            {
-                                matrix[targetRow][i] = 0;
-                            }
-                        }
-                        if (targetCol + range > matrix[0].Length && targetCol < 0)
-                        {
-                            for (int i = matrix[0].Length - 1; i >= 0; i--)
-                            {
-                                matrix[targetRow][i] = 0;
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                }
-
-                try
-                {
-                    if (targetCol >= 0 && targetCol < matrix[0].Length)
-                    {
-                        if (targetRow - range >= 0 && targetRow - range < matrix.Length)
-                        {
-                            for (var i = targetRow - range; i < matrix.Length; i++)
-                            {
-                                matrix[i][targetCol] = 0;
-                            }
-                        }
-                        if (targetRow - range < 0 && targetRow > 0)
-                        {
-                            for (int i = 0; i < matrix.Length; i++)
-                            {
-                                var asd = matrix[i].ToList();
-                                asd.RemoveAt(targetCol);
-                                matrix[i] = asd.ToArray();
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                }
-                try
-                {
-                    if (targetCol >= 0 && targetCol < matrix[0].Length)
-                    {
-                        if (targetRow + range >= 0 && targetRow + range <= matrix.Length)
-                        {
-                            for (var i = targetRow + range; i > 0; i--)
-                            {
-                                matrix[i - 1][targetCol] = 0;
-                            }
-                        }
-                        if (targetRow + range > matrix.Length && targetRow < 0)
-                        {
-                            for (int i = matrix.Length; i > 0; i--)
-                            {
-                                var asd = matrix[i - 1].ToList();
-                                asd.RemoveAt(targetCol);
-                                matrix[i - 1] = asd.ToArray();
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                }
-                for (int row = 0; row < matrix.Length; row++)
-                {
-                    var arr = matrix[row];
-                    arr = arr.Where(s => s != 0).ToArray();
-
-                    int areAllZeros = 0;
-
-                    // check if the whole row is zeros
-                    bool allEqual = arr
-                      .All(currentRowToCheck => int.Equals(areAllZeros, currentRowToCheck));
-                    // if the row contains elements different from zeros  
-                    if (!allEqual)
-                    {
-                        initializeMatrixToPrint.Enqueue(arr);
-                    }
-                }
-                matrix = new int[initializeMatrixToPrint.Count][];
-                for (int i = 0; i < matrix.Length; i++)
-                {
-                    matrix[i] = initializeMatrixToPrint.Dequeue();
+                    Matrix.RemoveAt(i);
+                    i--;
                 }
             }
         }
-        for (int row = 0; row < matrix.Length; row++)
-        {
-            for (int col = 0; col < matrix[row].Length; col++)
-            {
-                Console.Write($"{matrix[row][col]} ");
-            }
-            Console.WriteLine();
-        }
-    }
 
-    private static void ShootPreviousRows(int[][] matrix, int targetRow, int targetCol, int range)
-    {
-        for (int i = 1; i <= range; i++)
+        public static void PrintMatrix()
         {
-            try
+            if (Matrix.Count != 0)
             {
-                var nextRow = matrix[targetRow - i].ToList();
-                nextRow.RemoveAt(targetCol);
-                matrix[targetRow - i] = nextRow.ToArray();
-            }
-            catch (Exception)
-            {
-            }
-        }
-    }
+                for (int i = 0; i < Matrix.Count; i++)
+                {
+                    var row = string.Join(" ", Matrix[i]);
+                    if (row.Length == 0)
+                    {
+                        continue;
+                    }
 
-    private static void ShootNextRows(int[][] matrix, int targetRow, int targetCol, int range)
-    {
-        for (int i = 1; i <= range; i++)
-        {
-            try
-            {
-                var nextRow = matrix[targetRow + i].ToList();
-                nextRow.RemoveAt(targetCol);
-                matrix[targetRow + i] = nextRow.ToArray();
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-    }
-
-    private static void ShootLeft(int targetCol, int range, List<int> currentRow)
-    {
-        for (int i = 0; i < range; i++)
-        {
-            try
-            {
-                currentRow[targetCol - 1 - i] = 0;
-            }
-            catch (Exception)
-            {
-            }
-        }
-    }
-
-    private static void ShootRight(int targetCol, int range, List<int> currentRow)
-    {
-        for (int i = 0; i < range; i++)
-        {
-            try
-            {
-                currentRow[targetCol + 1 + i] = 0;
-            }
-            catch (Exception)
-            {
+                    Console.WriteLine(row);
+                }
             }
         }
     }

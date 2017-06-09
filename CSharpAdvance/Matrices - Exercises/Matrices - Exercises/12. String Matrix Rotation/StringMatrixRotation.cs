@@ -11,6 +11,7 @@ public class StringMatrixRotation
 
         var degrees = int.Parse(@params[1]);
         List<List<char>> matrix = InitializeMatrix();
+
         Rotate360(degrees, matrix);
         Rotate180(degrees, matrix);
         Rotate90(degrees, matrix);
