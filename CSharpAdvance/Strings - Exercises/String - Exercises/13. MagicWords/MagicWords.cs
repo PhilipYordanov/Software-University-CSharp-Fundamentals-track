@@ -9,8 +9,8 @@ public class MagicWords
             .Split();
 
         HashSet<char> firstWord = new HashSet<char>(input[0]);
-        HashSet<char> SecondWord = new HashSet<char>(input[1]);
+        HashSet<char> secondWord = new HashSet<char>(input[1]);
 
-        Console.WriteLine(firstWord.Count == SecondWord.Count ? "true" : "false");
+        Console.WriteLine(firstWord.Count == secondWord.Count ? "true" : "false");
     }
 }
