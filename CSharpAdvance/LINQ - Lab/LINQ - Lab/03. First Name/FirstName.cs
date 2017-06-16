@@ -10,7 +10,6 @@ public class FirstName
         var letters = Console.ReadLine()
             .Split()
             .OrderBy(x => x);
-        
 
         foreach (var letter in letters)
         {
@@ -24,6 +23,7 @@ public class FirstName
                 return;
             }
         }
+
         Console.WriteLine("No match");
     }
 }

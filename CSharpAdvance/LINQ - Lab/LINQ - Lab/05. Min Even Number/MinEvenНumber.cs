@@ -13,11 +13,9 @@ public class MinEvenНumber
                 .Where(x => x % 2 == 0)
                 .ToList()
                 .Min():f2}");
-
         }
         catch (Exception)
         {
-
             Console.WriteLine("No match");
         }
     }

@@ -23,8 +23,7 @@ public class MapDistricts
                     {
                         CityCode = city,
                         Population = population.ToList()
-                    }
-            )
+                    })
             .Where(x => x.Population.Sum() >= bound)
             .OrderByDescending(x => x.Population.Count())
             .ToList()
