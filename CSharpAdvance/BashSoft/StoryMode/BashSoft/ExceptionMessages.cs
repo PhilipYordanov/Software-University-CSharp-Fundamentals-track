@@ -11,6 +11,7 @@
         public const string DataAlreadyInitialisedException = "Data is already initialized!";
         public const string DataNotInitializedExceptionMessage = "The data structure must be initialised first in order to make any operations with it.";
         public const string InexistingCourseInDataBase = "The course you are trying to get does not exist in the data base!";
-
+        public const string UnableToParseNumber = "The sequence you've written is not a valid number.";
+        public const string ComparisonOfFilesWithDifferentSizes = "Files not of equal size, certain mismatch.";
     }
 }

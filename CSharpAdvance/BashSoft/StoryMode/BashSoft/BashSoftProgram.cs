@@ -4,13 +4,14 @@
     {
         public static void Main()
         {
+            InputReader.StartReadingCommands();
             //// Passed
             // IOManager.ChangeCurrentDirectoryAbsolute(@"D:\CSharpFundamentals\Software-University-C-Fundamentals-track\CSharpAdvance\BashSoft\StoryMode\BashSoft");
 
             //// Passed
             // IOManager.TraverseDirectory(20);
 
-            //// Passed
+            // Passed
             // IOManager.CreateDirectoryInCurrentFolder("*2");
 
             //// Passed

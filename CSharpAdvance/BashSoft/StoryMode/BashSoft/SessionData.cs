@@ -4,6 +4,6 @@
 
     internal class SessionData
     {
-        public static string currentPath = Directory.GetCurrentDirectory();
+        public static string CurrentPath = Directory.GetCurrentDirectory();
     }
 }

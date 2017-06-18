@@ -7,7 +7,7 @@
     {
         public static void WriteMessage(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message);
         }
 
         public static void WriteMessageOnNewLine(string message)
