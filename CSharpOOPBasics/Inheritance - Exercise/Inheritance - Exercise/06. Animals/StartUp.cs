@@ -32,11 +32,11 @@
                             animals.Add(frog);
                             break;
                         case "Kitten":
-                            Animal kitten = new Kitten(currentAnimalTokens[0], int.Parse(currentAnimalTokens[1]), currentAnimalTokens[2]);
+                            Animal kitten = new Kitten(currentAnimalTokens[0], int.Parse(currentAnimalTokens[1]));
                             animals.Add(kitten);
                             break;
                         case "Tomcat":
-                            Animal tomcat = new Tomcat(currentAnimalTokens[0], int.Parse(currentAnimalTokens[1]), currentAnimalTokens[2]);
+                            Animal tomcat = new Tomcat(currentAnimalTokens[0], int.Parse(currentAnimalTokens[1]));
                             animals.Add(tomcat);
                             break;
                         default:
