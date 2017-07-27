@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 public class ListyIterator<T> : IEnumerable<T>
 {
@@ -33,23 +34,30 @@ public class ListyIterator<T> : IEnumerable<T>
         return false;
     }
 
-    public string  Print()
+    public string Print()
     {
-        return this.dataList.Count == 0 
-            ? throw new InvalidOperationException(ExceptionMessage) 
-            :$"{this.dataList[this.CurrentIndex]}";
+        return this.dataList.Count == 0
+            ? throw new InvalidOperationException(ExceptionMessage)
+            : $"{this.dataList[this.CurrentIndex]}";
     }
 
     public string PrintAll()
     {
-        return this.dataList.Count == 0
-            ? throw new InvalidOperationException(ExceptionMessage)
-            : $"{string.Join(" ", this.dataList)}";
+        //return this.dataList.Count == 0
+        //    ? throw new InvalidOperationException(ExceptionMessage)
+        //    : $"{string.Join(" ", this.dataList)}";
+      
+        var sb = new StringBuilder();
+        foreach (var item in this.dataList)
+        {
+            sb.Append($"{item} ");
+        }
+        return sb.ToString().Trim();
     }
 
     public IEnumerator<T> GetEnumerator()
     {
-        for (int i = 0; i < this.dataList.Count -1; i++)
+        for (int i = 0; i < this.dataList.Count ; i++)
         {
             yield return this.dataList[i];
         }
