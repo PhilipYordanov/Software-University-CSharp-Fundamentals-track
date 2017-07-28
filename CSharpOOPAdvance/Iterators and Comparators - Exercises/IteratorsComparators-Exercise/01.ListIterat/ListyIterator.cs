@@ -14,7 +14,7 @@ public class ListyIterator<T>
 
     public bool Move()
     {
-        if (this.CurrentIndex < this.dataList.Count -1)
+        if (this.CurrentIndex < this.dataList.Count - 1)
         {
             ++this.CurrentIndex;
             return true;
@@ -31,7 +31,7 @@ public class ListyIterator<T>
         return false;
     }
 
-    public void  Print()
+    public void Print()
     {
         if (this.dataList.Count == 0)
         {
