@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
 
 public class Tracker
 {
@@ -10,7 +9,7 @@ public class Tracker
         var methods = type.GetMethods();
         foreach (var methodInfo in methods)
         {
-            if (methodInfo.CustomAttributes.Any(x=>x.AttributeType == typeof(SoftUniAttribute)))
+            if (methodInfo.CustomAttributes.Any(x => x.AttributeType == typeof(SoftUniAttribute)))
             {
                 var attrs = methodInfo.GetCustomAttributes(false);
 

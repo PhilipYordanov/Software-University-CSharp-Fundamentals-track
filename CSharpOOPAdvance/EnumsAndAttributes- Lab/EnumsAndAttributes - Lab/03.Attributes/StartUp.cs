@@ -6,6 +6,5 @@ public class StartUp
     {
         var tracker = new Tracker();
         tracker.PrintMethodsByAuthor();
-
     }
 }

@@ -27,6 +27,7 @@ public class StartUp
         while ((command = Console.ReadLine()) != "END")
         {
             var commandName = command.Split().ToArray().FirstOrDefault();
+			if(commands.ContainsKey(command)){
             try
             {
                 commands[commandName].Invoke();
@@ -34,7 +35,7 @@ public class StartUp
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-            }
+            }}
         }
     }
 }
