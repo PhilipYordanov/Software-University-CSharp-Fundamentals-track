@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F046F6B8-1102-4CC7-8DBE-7B46C0397234}</ProjectGuid>
+    <ProjectGuid>{DA1C71BE-3BD2-4132-94E9-06DFED4480D7}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_09.Traffic_Lights</RootNamespace>
-    <AssemblyName>_09.Traffic_Lights</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <RootNamespace>_01.Stealer</RootNamespace>
+    <AssemblyName>_01.Stealer</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,7 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\Light.cs" />
+    <Compile Include="Hacker.cs" />
+    <Compile Include="Spy.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

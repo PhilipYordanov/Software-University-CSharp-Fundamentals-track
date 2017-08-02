@@ -1,5 +1,6 @@
 ﻿using _09.Traffic_Lights.Enums;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace _09.Traffic_Lights
@@ -10,8 +11,7 @@ namespace _09.Traffic_Lights
         {
             var lightsArray = Console.ReadLine()
                 .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
-                .ToArray()
-                .Select(x => (Lights)Enum.Parse(typeof(Lights), x))
+                .Select(x => (Light)Enum.Parse(typeof(Light), x))
                 .ToArray();
 
             var numberOfRotations = int.Parse(Console.ReadLine());
@@ -21,22 +21,18 @@ namespace _09.Traffic_Lights
                 int currentLight = 0;
                 foreach (var light in lightsArray)
                 {
-                    lightsArray[currentLight] = EnumGetter.GetNextValueOf(lightsArray[currentLight]);
+                    lightsArray[currentLight] = GetNextValueOf(lightsArray[currentLight]);
                     currentLight++;
                 }
-                Console.WriteLine(string.Join(" ",lightsArray));
+                Console.WriteLine(string.Join(" ", lightsArray));
             }
         }
-
-        public class EnumGetter
+        public static Light GetNextValueOf(Light value)
         {
-            public static Lights GetNextValueOf(Lights value)
-            {
-                return (from Lights light in Enum.GetValues(typeof(Lights))
-                        where light > value
-                        orderby light
-                        select light).DefaultIfEmpty().First();
-            }
+            return (from Light light in Enum.GetValues(typeof(Light))
+                    where light > value
+                    orderby light
+                    select light).DefaultIfEmpty().First();
         }
     }
 }

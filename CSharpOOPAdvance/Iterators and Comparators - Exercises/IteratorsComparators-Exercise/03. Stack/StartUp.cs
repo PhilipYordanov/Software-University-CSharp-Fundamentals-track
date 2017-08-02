@@ -5,7 +5,7 @@ using System.Linq;
 public class StartUp
 {
     private static string[] parameters = null;
-    private static string command;
+    private static string inputLine;
 
     public static void Main()
     {
@@ -17,19 +17,20 @@ public class StartUp
             {"Pop",() => data.Pop() }
         };
 
-        while ((command = Console.ReadLine()) != "END")
+        while ((inputLine = Console.ReadLine()) != "END")
         {
-            var commandArgs = command.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
+            var commandArgs = inputLine.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
                 .ToList();
-            var theCOmmand = commandArgs[0];
+
+            var command = commandArgs[0];
             commandArgs.RemoveAt(0);
 
-            if (commands.ContainsKey(theCOmmand))
+            if (commands.ContainsKey(command))
             {
                 parameters = commandArgs.ToArray();
                 try
                 {
-                    commands[theCOmmand].Invoke();
+                    commands[command].Invoke();
                 }
                 catch (Exception e)
                 {
